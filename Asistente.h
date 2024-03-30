@@ -7,9 +7,10 @@ class Asistente{
         string tipo, nombre;
         int edad;
     public:
-        Asistente(string tipo, string nombre, int edad);
+        Asistente(string tipo, string nombre);
         string getTipo();
         string getNombre();
         int getEdad();
+        void setEdad(int edad);
         ~Asistente();
 };
