@@ -2,17 +2,6 @@
 #include "Evento.h"
 using namespace std;
 
-/*Evento Test
-Evento::Evento(string tipo, string tema, int capacidad){
-    this -> tipo = tipo;
-    this -> tema = tema;
-    this -> ubicacion = nullptr;
-    this -> duracion = 0;
-    this -> capacidad = capacidad;
-    this -> cantidad = 0;
-    this -> asistentes = new Asistente* [capacidad];
-}*/
-
 //Evento Publico
 Evento::Evento(string tema, int duracion, string ubicacion, int capacidad, bool registroRequerido){
     this -> tipo = "Publico";
@@ -84,9 +73,52 @@ bool Evento::getRegistroRequerido(){return registroRequerido;}
 bool Evento::getAccesoGratuito(){return accesoGratuito;}
 bool Evento::getCertificadoDisponible(){return certificadoDisponible;}
 
+void Evento::listarAsistentes() {
+    if (cantidad == 0) {
+        cout << "No hay asistentes registrados" << endl;
+        return;
+    }
+
+    for (int i = 0; i < cantidad; i++) {
+        string tipo = asistentes[i] -> getTipo();
+        cout << "[" << (i+1) << "] Tipo asistente: " << tipo << endl; 
+        cout << "[-] Nombre: " << asistentes[i] -> getNombre() << endl;
+
+        if (tipo == "Basico") { //Asistente Basico
+            cout << "[-] Edad: " << asistentes[i] -> getEdad() << endl;
+            cout << "-----------------------------" << endl;
+        }
+        else if (tipo == "Online") { //Asistente en Linea
+            cout << "[-] Nickname: " << asistentes[i] -> getNickname() << endl;
+            cout << "-----------------------------" << endl;
+        }
+        else if (tipo == "T_Empresa") { //Trabajador Empresa
+            cout << "[-] Edad: " << asistentes[i] -> getEdad() << endl;
+            cout << "[-] Ocupacion: " << asistentes[i] -> getOcupacion() << endl;
+            cout << "[-] Empresa: " << asistentes[i] -> getEmpresa() << endl;
+            cout << "-----------------------------" << endl;
+        }
+        else if (tipo == "T_Docente") { //Trabajador Docente
+            cout << "[-] Ocupacion: " << asistentes[i] -> getOcupacion() << endl;
+            cout << "[-] Universidad: " << asistentes[i] -> getUniversidad() << endl;
+            cout << "-----------------------------" << endl;
+        }
+        else if (tipo == "Estudiante") { //Estudiante
+            cout << "[-] Carrera: " << asistentes[i] -> getCarrera() << endl;
+            cout << "[-] Universidad: " << asistentes[i] -> getUniversidad() << endl;
+            cout << "[-] Semestre Academico: " << asistentes[i] -> getSemestre() << endl;
+            cout << "-----------------------------" << endl;
+        }
+        else {
+            cout << "Tipo no registrado" << endl;
+        }
+    }
+}
+
 void Evento::setUbicacion(string ubicacion){
     this -> ubicacion = ubicacion;
 }
+
 void Evento::setDuracion(int duracion){
     this -> duracion = duracion;
 }

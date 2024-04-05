@@ -19,6 +19,7 @@ class Funciones{
         void printTipo();
         void printAsistTipo();
         void listarEventos();
+        void listarAsistentes();
         void printEventos();
 
         bool validarBoolean(string data);

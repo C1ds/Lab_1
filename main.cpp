@@ -20,7 +20,8 @@ int main() {
                 break;}
         case 2:{funciones -> registrarAsist();
                 break;}
-        case 3:{break;}
+        case 3:{funciones -> listarAsistentes();
+                break;}
         case 4:{funciones -> printEventos();
                 break;}
         case 5:{break;}

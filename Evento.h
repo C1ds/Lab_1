@@ -31,10 +31,12 @@ class Evento {
         int getCapacidad();
         int getCantidad();
         int getDuracion();
+
         bool getRegistroRequerido();
         bool getAccesoGratuito();
         bool getCertificadoDisponible();
 
+        void listarAsistentes();
         void setUbicacion(string ubicacion);
         void setDuracion(int duracion);
 

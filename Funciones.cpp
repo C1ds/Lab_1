@@ -76,6 +76,56 @@ void Funciones::listarEventos(){
 
 }
 
+void Funciones::listarAsistentes() {
+    string* data = new string;
+    cout << "[1] Listar asistentes de un evento" << endl;
+    cout << "[2] Listar todos los asistentes por evento" << endl;
+    cout << "Opcion: ";
+    cin.ignore();
+    getline(cin,*data);
+    int i = validarOpcion(*data);
+
+    if (cantidad == 0) {
+        cout << "No hay eventos que listar" << endl;
+        return;
+    }
+
+    switch (i){
+    case 1: { //Asistentes de un Evento
+            listarEventos();
+            cout << "Opcion: ";
+            cin >> *data;
+            int i = validarOpcion(*data);
+    
+            for (int x = 0; x < cantidad; x++) {
+                if ((i-1) == x) {
+                    if (0 < eventos[x] -> getCantidad()) {
+                        cout << "#############################" << endl;
+                        cout << "[" << (x+1) << "] " << eventos[x] -> getTipo() << " - " << eventos[x] -> getTema() << endl;
+                        cout << "#############################" << endl;
+                        eventos[x] -> listarAsistentes();
+                        return;
+                    }
+                }
+            }
+
+            break;}
+    case 2: { //Asistentes de todos los Eventos
+            for (int x = 0; x < cantidad; x++) {
+                if (0 < eventos[x] -> getCantidad()) {
+                    cout << "#############################" << endl;
+                    cout << "[" << (x+1) << "] " << eventos[x] -> getTipo() << " - " << eventos[x] -> getTema() << endl;
+                    cout << "#############################" << endl;
+                    eventos[x] -> listarAsistentes();
+                } 
+            }
+            break;}
+    default:
+        cout << "-------Opcion Invalidad-------" << endl;
+        break;
+    }
+}
+
 void Funciones::printEventos(){
     if (cantidad < 1) {
         cout << "No hay eventos registrados" << endl;
@@ -258,7 +308,7 @@ Asistente* Funciones::crearAsistente() {
         getline(cin,*data);
         string carrera = *data;
 
-        cout << "Universidad";
+        cout << "Universidad: ";
         getline(cin,*data);
         string universidad = *data;
 
