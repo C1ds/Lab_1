@@ -177,12 +177,35 @@ Asistente* Funciones::crearAsistente() {
     printAsistTipo();
     string* data = new string;
     cin >> *data;
-    int* i = validarOpcion(*data);
+    int i = validarOpcion(*data);
+    Asistente* asistente;
 
-    switch (*i){
+    switch (i){
     case 1: { //Asistente Basico
+        cout << "Nombre: ";
+        cin.ignore();
+        getline(cin,*data);
+        string nombre = *data;
+
+        cout << "Edad: ";
+        cin >> *data;
+        i = validarOpcion(*data);
+        int edad = i;
+
+        asistente  = new Asistente(nombre, edad);
+        return asistente;
         break;}
     case 2: { //Asistente en Linea
+        cout << "Nombre: ";
+        cin.ignore();
+        getline(cin,*data);
+        string nombre = *data;
+
+        cout << "Nickname: ";
+        getline(cin,*data);
+        string nickname = *data;
+
+
         break;}
     case 3: { //Trabajador Empresa
         break;}
@@ -195,8 +218,7 @@ Asistente* Funciones::crearAsistente() {
         crearAsistente();
     }
 
-    Asistente* a = new Asistente("test", 1);
-    return a;
+    return asistente;
     }
 
 bool Funciones::registrarAsist() {
@@ -208,11 +230,12 @@ bool Funciones::registrarAsist() {
     int i = validarOpcion(*data);
     
     for (int x = 0; x < cantidad; x++) {
-        if (i == x) {
+        if ((i-1) == x) {
             if (eventos[x] -> getCantidad() < eventos[x] -> getCapacidad()) {
                 //Agregar asistente
-
-
+                Asistente* a = crearAsistente();
+                eventos[x] -> addAsistente(a);
+                return true;
             }
         }
     }
