@@ -16,11 +16,14 @@ int main() {
         *opcion = funciones -> validarOpcion(*data);
         
         switch (*opcion){
-        case 1:funciones -> Crearevento();
-        case 2:break;
-        case 3:break;
-        case 4:break;
-        case 5:break;
+        case 1:{funciones -> crearEvento();
+                break;}
+        case 2:{
+                break;}
+        case 3:{break;}
+        case 4:{funciones -> printEventos();
+                break;}
+        case 5:{break;}
         default:
             cout << "-------Opcion Invalidad-------" << endl;
             break;

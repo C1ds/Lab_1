@@ -4,26 +4,27 @@ using namespace std;
 
 class Asistente{
     private:
-        string tipo, nombre, nickname, ocupacion, empresa, est_Educativo;
+        string tipo, nombre, nickname, ocupacion, empresa, carrera, universidad;
         int edad, semestre;
     public:
         //Asistente Basico
-        Asistente(string nombre);
+        Asistente(string nombre, int edad);
         //Asistente en Linea
         Asistente(string nombre, string nickname);
         //Trabajador Empresa
-        Asistente(string nombre, string ocupacion, string empresa);
+        Asistente(string nombre, int edad, string ocupacion, string empresa);
         //Trabajador Docente
-        Asistente(string nombre, int edad, string ocupacion, string est_Educativo);
+        Asistente(string nombre, string ocupacion, string universidad);
         //Estudiante
-        Asistente(string nombre, string est_Educativo, int semestre);
+        Asistente(string nombre, string carrera, string universidad, int semestre);
 
         string getTipo();
         string getNombre();
         string getNickname();
         string getOcupacion();
         string getEmpresa();
-        string getEstablecimiento();
+        string getCarrera();
+        string getUniversidad();
         int getEdad();
         int getSemestre();
 

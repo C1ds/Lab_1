@@ -14,10 +14,18 @@ class Funciones{
         int getCapacidad();
         int getCantidad();
         int validarOpcion(string opcion);
-        bool Crearevento();
+        
         void printMenu();
         void printTipo();
+        void printAsistTipo();
+        void listarEventos();
+        void printEventos();
+
+        bool validarBoolean(string data);
+        bool crearEvento();
         bool addEvento(Evento* evento);
         
+
+
         ~Funciones();
 };
