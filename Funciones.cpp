@@ -205,13 +205,70 @@ Asistente* Funciones::crearAsistente() {
         getline(cin,*data);
         string nickname = *data;
 
-
+        asistente = new Asistente(nombre, nickname);
+        return asistente;
         break;}
     case 3: { //Trabajador Empresa
+        cout << "Nombre: ";
+        cin.ignore();
+        getline(cin,*data);
+        string nombre = *data;
+
+        cout << "Edad: ";
+        cin >> *data;
+        i = validarOpcion(*data);
+        int edad = i;
+
+        cout << "Ocupacion: ";
+        cin.ignore();
+        getline(cin,*data);
+        string ocupacion = *data;
+
+        cout << "Empresa: ";
+        getline(cin,*data);
+        string empresa = *data;
+
+        asistente = new Asistente(nombre, edad, ocupacion, empresa);
+        return asistente;
         break;}
     case 4: { //Trabajador Docente
+        cout << "Nombre: ";
+        cin.ignore();
+        getline(cin,*data);
+        string nombre = *data;
+
+        cout << "Ocupacion: ";
+        getline(cin,*data);
+        string ocupacion = *data;
+
+        cout << "Universidad: ";
+        getline(cin,*data);
+        string universidad = *data;
+
+        asistente = new Asistente(nombre, ocupacion, universidad);
+        return asistente;
         break;}
     case 5: { //Estudiante
+        cout << "Nombre: ";
+        cin.ignore();
+        getline(cin,*data);
+        string nombre = *data;
+
+        cout << "Carrera: ";
+        getline(cin,*data);
+        string carrera = *data;
+
+        cout << "Universidad";
+        getline(cin,*data);
+        string universidad = *data;
+
+        cout << "Semestre: ";
+        cin >> *data;
+        i = validarOpcion(*data);
+        int semestre = i;
+
+        asistente = new Asistente(nombre, carrera, universidad, semestre);
+        return asistente;
         break;}
     default:
         cout << "-------Opcion Invalidad-------" << endl;
@@ -223,6 +280,7 @@ Asistente* Funciones::crearAsistente() {
 
 bool Funciones::registrarAsist() {
     listarEventos();
+    if (cantidad == 0) {return false;}
     
     string* data = new string;
     cout << "Opcion: ";
