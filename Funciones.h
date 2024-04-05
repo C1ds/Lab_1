@@ -22,10 +22,11 @@ class Funciones{
         void printEventos();
 
         bool validarBoolean(string data);
+        bool registrarAsist();
         bool crearEvento();
         bool addEvento(Evento* evento);
         
-
+        Asistente* crearAsistente();
 
         ~Funciones();
 };

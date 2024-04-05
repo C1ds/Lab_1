@@ -66,8 +66,12 @@ void Funciones::listarEventos(){
         return;
     }
 
+    cout << "Eventos disponibles:" << endl;
     for (int i = 0; i < cantidad; i++) {
-        cout << "[" << (i+1) << "] " << eventos[i] -> getTipo() << " - " << eventos[i] -> getTema() << endl;
+        if (eventos[i] -> getCantidad() < eventos[i] -> getCapacidad()) {
+            cout << "[" << (i+1) << "] " << eventos[i] -> getTipo() << " - " << eventos[i] -> getTema() << endl;
+            cout << "Capacidad: " << eventos[i] -> getCapacidad() << " - Inscritos: " << eventos[i] -> getCantidad() << endl;
+        }
     }
 
 }
@@ -167,6 +171,52 @@ bool Funciones::validarBoolean(string data){
         return validarBoolean(data);
         }
 
+}
+
+Asistente* Funciones::crearAsistente() {
+    printAsistTipo();
+    string* data = new string;
+    cin >> *data;
+    int* i = validarOpcion(*data);
+
+    switch (*i){
+    case 1: { //Asistente Basico
+        break;}
+    case 2: { //Asistente en Linea
+        break;}
+    case 3: { //Trabajador Empresa
+        break;}
+    case 4: { //Trabajador Docente
+        break;}
+    case 5: { //Estudiante
+        break;}
+    default:
+        cout << "-------Opcion Invalidad-------" << endl;
+        crearAsistente();
+    }
+
+    Asistente* a = new Asistente("test", 1);
+    return a;
+    }
+
+bool Funciones::registrarAsist() {
+    listarEventos();
+    
+    string* data = new string;
+    cout << "Opcion: ";
+    cin >> *data;
+    int i = validarOpcion(*data);
+    
+    for (int x = 0; x < cantidad; x++) {
+        if (i == x) {
+            if (eventos[x] -> getCantidad() < eventos[x] -> getCapacidad()) {
+                //Agregar asistente
+
+
+            }
+        }
+    }
+    return false;
 }
 
 bool Funciones::crearEvento(){

@@ -63,6 +63,7 @@ Evento::Evento(string tema, int duracion, string ubicacion, int capacidad, strin
 Evento::Evento(int duracion, string ubicacion, int capacidad){
     this -> tipo = "Privado";
     this -> cantidad = 0;
+    this -> tema = "Tema Privado";
     this -> duracion = duracion;
     this -> ubicacion = ubicacion;
     this -> capacidad = capacidad;

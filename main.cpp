@@ -18,7 +18,7 @@ int main() {
         switch (*opcion){
         case 1:{funciones -> crearEvento();
                 break;}
-        case 2:{
+        case 2:{funciones -> registrarAsist();
                 break;}
         case 3:{break;}
         case 4:{funciones -> printEventos();
