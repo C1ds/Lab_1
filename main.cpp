@@ -9,6 +9,8 @@ int main() {
     string* data = new string;
     int* opcion = new int;
     Funciones* funciones = new Funciones(50);
+    funciones -> leerArchivoEvento();
+    funciones -> leerArchivoAsistentes();
     do {
         funciones -> printMenu();
         cin >> *data;

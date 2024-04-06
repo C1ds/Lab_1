@@ -21,7 +21,9 @@ class Funciones{
         void listarEventos();
         void listarAsistentes();
         void printEventos();
-
+        void leerArchivoEvento();
+        void leerArchivoAsistentes();
+        
         bool validarBoolean(string data);
         bool registrarAsist();
         bool crearEvento();

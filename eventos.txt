@@ -1,0 +1,5 @@
+0,Publico,conferencia de tecnologia,120,centro de convenciones,200,1
+1,Digital,seminario de marketing,90,300,1
+2,Corporativo,reunion de negocios,60,oficinas centrales,500,finznzas,codelco
+3,Academico,curso de programacion,150,universidad X,100,ucn,1
+4,Privado,180,residencia privada,20

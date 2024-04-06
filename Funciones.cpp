@@ -2,6 +2,9 @@
 #include <string>
 #include "Funciones.h"
 #include "Evento.h"
+#include <fstream>
+#include <sstream>
+#include <vector>
 
 using namespace std;
 
@@ -516,5 +519,79 @@ bool Funciones::addEvento(Evento* evento){
     }
     return false;
 }
+void Funciones::leerArchivoEvento() {
+    string nombreArchivo = "eventos.txt";
+    ifstream archivo(nombreArchivo.c_str());
+    string linea;
+    
+    if (!archivo.is_open()) {
+        cout << "Error al abrir el archivo." << endl;
+        return;
+    }
 
+    while (getline(archivo, linea)) {
+        stringstream ss(linea);
+        string parte;
+        vector<string> partes;
+
+        // mete las partes a un vector
+        while (getline(ss, parte, ',')) {
+            partes.push_back(parte);
+        }
+        Evento* e;
+        if(partes[1]=="Publico"){
+            e = new Evento(partes[2],validarOpcion(partes[3]),partes[4],validarOpcion(partes[5]), validarOpcion(partes[6]));
+        } else if (partes[1]=="Digital"){
+            e = new Evento(partes[2],validarOpcion(partes[3]),validarOpcion(partes[4]),partes[5],validarOpcion(partes[6]));
+        }else if (partes[1]=="Corporativo"){
+            e = new Evento(partes[2],validarOpcion(partes[3]),partes[4],validarOpcion(partes[5]),partes[6],partes[7]);
+        }else if (partes[1]=="Academico"){
+            e = new Evento(partes[2],validarOpcion(partes[3]),partes[4],validarOpcion(partes[5]),partes[6],partes[7]);
+        }else if (partes[1]=="Privado"){
+            e = new Evento(validarOpcion(partes[2]),partes[3],validarOpcion(partes[4]));
+        }
+        addEvento(e);
+        
+       
+    }
+
+    archivo.close();
+}
+void Funciones::leerArchivoAsistentes(){
+    string nombreArchivo = "asistentes.txt";
+    ifstream archivo(nombreArchivo.c_str());
+    string linea;
+
+    if (!archivo.is_open()) {
+        cout << "Error al abrir el archivo." << endl;
+        return;
+    }
+
+    while (getline(archivo, linea)) {
+        stringstream ss(linea);
+        string parte;
+        vector<string> partes;  
+    while (getline(ss, parte, ',')) {
+        partes.push_back(parte);
+    }
+    Asistente* a;
+    if(partes[1]=="Basico"){
+        a = new Asistente(partes[2],validarOpcion(partes[3]));
+        
+    }else if(partes[1]=="Online"){
+        a = new Asistente(partes[2],partes[3]);
+    }else if(partes[1]=="T_Empresa"){
+        a = new Asistente(partes[2],validarOpcion(partes[3]),partes[4],partes[5]);
+    }else if(partes[1]=="T_Docente"){
+        a = new Asistente(partes[2],partes[3],partes[4]);
+    }else if(partes[1]=="Estudiante"){
+        a = new Asistente(partes[2],partes[3],partes[4],validarOpcion(partes[5]));
+    }
+    int index = validarOpcion(partes[0]);
+    
+    eventos[index] -> addAsistente(a);
+    }
+    archivo.close();
+     }
+     
 Funciones::~Funciones(){cout << "Programa finalizado" << endl;}
