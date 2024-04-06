@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Evento.h"
+#include<string>  
 using namespace std;
 
 //Evento Publico
@@ -58,7 +59,30 @@ Evento::Evento(int duracion, string ubicacion, int capacidad){
     this -> capacidad = capacidad;
     this -> asistentes = new Asistente* [capacidad];
 }
-
+string Evento::getAsistentes(){
+    string listaDeAsistentes;
+    for (int i = 0; i < cantidad; i++){
+        string tipo = asistentes[i]->getTipo();
+         if (tipo == "Basico") {
+             int num = asistentes[i] ->getEdad();
+            string str = to_string(num);
+            listaDeAsistentes+=i+","+asistentes[i] ->getTipo()+","+asistentes[i] ->getNombre()+","+str+"\n";
+        }
+        else if (tipo == "Online") {
+            listaDeAsistentes+=i+","+asistentes[i] ->getTipo()+","+asistentes[i] ->getNombre()+","+asistentes[i] ->getNickname()+"\n";
+        }
+        else if (tipo == "T_Empresa") {
+            listaDeAsistentes+=i+","+asistentes[i] ->getTipo()+","+asistentes[i] ->getNombre()+","+to_string(asistentes[i] ->getEdad())+","+asistentes[i] ->getOcupacion()+","+asistentes[i] ->getEmpresa()+"\n";
+        }
+        else if (tipo == "T_Docente") {
+            listaDeAsistentes+=i+","+asistentes[i] ->getTipo()+","+asistentes[i] ->getNombre()+","+asistentes[i] ->getOcupacion()+","+asistentes[i] ->getUniversidad()+"\n";
+        }
+        else if (tipo == "Estudiante") {
+            listaDeAsistentes+=i+","+asistentes[i] ->getTipo()+","+asistentes[i] ->getNombre()+","+asistentes[i] ->getCarrera()+","+asistentes[i] ->getUniversidad()+","+to_string(asistentes[i] ->getSemestre())+"\n";
+        }
+    }
+    return listaDeAsistentes;
+    }
 string Evento::getTipo(){return tipo;}
 string Evento::getTema(){return tema;}
 string Evento::getUbicacion(){return ubicacion;}
@@ -115,13 +139,7 @@ void Evento::listarAsistentes() {
     }
 }
 
-void Evento::setUbicacion(string ubicacion){
-    this -> ubicacion = ubicacion;
-}
 
-void Evento::setDuracion(int duracion){
-    this -> duracion = duracion;
-}
 
 bool Evento::addAsistente(Asistente* asistente){
     if (cantidad < capacidad) {

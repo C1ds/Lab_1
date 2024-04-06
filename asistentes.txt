@@ -1,5 +1,5 @@
-4,Basico,Juan Pérez,30
-2,Online,Carlos Rodríguez,carlitos22
-1,T_Empresa,Pedro Sanchez,35,Ingeniero de Sistemas,TechCorp
-3,T_Docente,José González,Profesor de Matemáticas,Universidad Central
 0,Estudiante,Alejandro Ramirez,Ingeniería Civil,Universidad Autónoma,4
+1,T_Empresa,Pedro Sanchez,35,Ingeniero de Sistemas,TechCorp
+2,Online,Carlos Rodríguez,carlitos22
+3,T_Docente,José González,Profesor de Matemáticas,Universidad Central
+4,Basico,Juan Pérez,30

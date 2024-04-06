@@ -11,6 +11,7 @@ int main() {
     Funciones* funciones = new Funciones(50);
     funciones -> leerArchivoEvento();
     funciones -> leerArchivoAsistentes();
+    funciones -> escribirArchivo();
     do {
         funciones -> printMenu();
         cin >> *data;

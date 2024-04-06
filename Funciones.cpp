@@ -546,7 +546,7 @@ void Funciones::leerArchivoEvento() {
         }else if (partes[1]=="Corporativo"){
             e = new Evento(partes[2],validarOpcion(partes[3]),partes[4],validarOpcion(partes[5]),partes[6],partes[7]);
         }else if (partes[1]=="Academico"){
-            e = new Evento(partes[2],validarOpcion(partes[3]),partes[4],validarOpcion(partes[5]),partes[6],partes[7]);
+            e = new Evento(partes[2],validarOpcion(partes[3]),partes[4],validarOpcion(partes[5]),partes[6],validarBoolean(partes[7]));
         }else if (partes[1]=="Privado"){
             e = new Evento(validarOpcion(partes[2]),partes[3],validarOpcion(partes[4]));
         }
@@ -593,5 +593,100 @@ void Funciones::leerArchivoAsistentes(){
     }
     archivo.close();
      }
+void Funciones::escribirArchivo(){
+    
+    string archEvento = "eventos.txt";
+    string archAsistent = "asistentes.txt";
+    ofstream archivo;
+    ofstream archivoAsistentes;
+    archivo.open(archEvento.c_str(), fstream::out);
+    archivoAsistentes.open(archAsistent.c_str(), fstream::out);
+    if (cantidad < 1) {
+        archivo << "No hay eventos registrados" << endl;
+        return;
+    }
+
+    string tipo;
+    for ( int i = 0; i < cantidad; i++){
+        tipo = eventos[i] -> getTipo();
+        cout << "#############################" << endl;
+        
+        if (tipo == "Publico") {
+            archivo << i <<","<<eventos[i] -> getTipo() <<","<< eventos[i] -> getTema() <<","<< eventos[i] -> getDuracion() <<","<<eventos[i] -> getUbicacion() <<","<< eventos[i] -> getCapacidad()<<","<< eventos[i] -> getCantidad()  << endl;
+            archivoAsistentes<<i<< eventos[i]-> getAsistentes();
+            continue;
+        }
+        else if (tipo == "Digital") {
+            archivo << i<<","<< eventos[i] -> getTipo() <<","<< eventos[i] -> getTema() <<","<< eventos[i] -> getDuracion() <<","<<eventos[i] -> getCapacidad() <<","<< eventos[i] -> getCantidad() << endl;
+            archivoAsistentes<<i<< eventos[i]-> getAsistentes();
+            continue;
+        }
+        else if (tipo == "Corporativo") {
+            
+            archivo << i<<","<< eventos[i] -> getTipo() <<","<< eventos[i] -> getTema() <<","<< eventos[i] -> getDuracion() <<","<<eventos[i] -> getUbicacion() <<","<< eventos[i] -> getCapacidad() <<","<< eventos[i] -> getDepartamentoResponsable()<<","<< eventos[i] -> getEmpresa()<< endl;
+            archivoAsistentes<<i<< eventos[i]-> getAsistentes();
+            continue;
+            
+        }
+        else if (tipo == "Academico"){
+            
+            archivo << i<<","<< "Academico" <<","<< eventos[i] -> getTema() <<","<< eventos[i] -> getDuracion() <<","<<eventos[i] -> getUbicacion() <<","<< eventos[i] -> getCapacidad() <<","<< eventos[i] -> getUniversidad()<<","<<  eventos[i] -> getCertificadoDisponible() <<endl;
+            archivoAsistentes<<i<< eventos[i]-> getAsistentes();
+            continue;
+            
+            
+            //archivo << "Certificado disponible: " << boolalpha << eventos[i] -> getCertificadoDisponible() << endl;
+        }
+        else if (tipo == "Privado") {
+            
+            archivo << i<<","<< eventos[i] -> getTipo() <<","<< eventos[i] -> getDuracion() <<","<< eventos[i] -> getUbicacion() <<","<<eventos[i] -> getCapacidad() <<endl;
+            archivoAsistentes<<i<< eventos[i]-> getAsistentes();
+            continue;
+        }
+        else {
+            cout << "------Evento no Listado------" << endl;
+        };
+        
+    }
+    archivo.close();
+    archivoAsistentes.close();
+}
+    
+    //
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
      
 Funciones::~Funciones(){cout << "Programa finalizado" << endl;}

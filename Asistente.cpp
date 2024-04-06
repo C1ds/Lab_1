@@ -48,8 +48,6 @@ string Asistente::getUniversidad(){return universidad;}
 int Asistente::getEdad(){return edad;}
 int Asistente::getSemestre(){return semestre;}
 
-void Asistente::setEdad(int edad){
-    this -> edad = edad;
-}
+
 
 Asistente::~Asistente(){}

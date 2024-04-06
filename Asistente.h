@@ -7,17 +7,45 @@ class Asistente{
         string tipo, nombre, nickname, ocupacion, empresa, carrera, universidad;
         int edad, semestre;
     public:
-        //Asistente Basico
+                /**
+         * Constructor de la Clase Asistente, tipo Basico
+         * @param string
+         * @param int
+        */
         Asistente(string nombre, int edad);
-        //Asistente en Linea
+                /**
+         * Constructor de la Clase Asistente, tipo Online
+         * @param string
+         * @param string
+        */
         Asistente(string nombre, string nickname);
-        //Trabajador Empresa
+                
+        /**
+         * Constructor de la Clase Asistente, tipo T_Empresa
+         * @param string
+         * @param int
+         * @param string
+         * @param string
+        */
         Asistente(string nombre, int edad, string ocupacion, string empresa);
-        //Trabajador Docente
+                /**
+         * Constructor de la Clase Asistente, tipo T_Docente
+         * @param string
+         * @param string
+         * @param string
+        */
         Asistente(string nombre, string ocupacion, string universidad);
-        //Estudiante
+                /**
+         * Constructor de la Clase Asistente, tipo Estudiante
+         * @param string
+         * @param string
+         * @param string
+         * @param int
+        */
         Asistente(string nombre, string carrera, string universidad, int semestre);
-
+        /**
+         * Getters de la Clase
+        */
         string getTipo();
         string getNombre();
         string getNickname();
@@ -28,7 +56,8 @@ class Asistente{
         int getEdad();
         int getSemestre();
 
-        void setEdad(int edad);
-        
+                /**
+         * Destructor de la Clase Asistente
+        */
         ~Asistente();
 };

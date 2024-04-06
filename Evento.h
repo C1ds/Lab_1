@@ -2,7 +2,9 @@
 #include <iostream>
 #include "Asistente.h"
 using namespace std;
-
+/**
+ * @class Clase Evento
+*/
 class Evento {
     private:
         string tipo, tema, ubicacion, plataformaTransmision, departamentoResponsable, empresa, universidad;
@@ -10,17 +12,54 @@ class Evento {
         bool registroRequerido, accesoGratuito, certificadoDisponible;
         Asistente** asistentes;
     public:
-        //Evento Publico
+                /**
+         * Constructor de la Clase Evento, tipo Publico
+         * @param string
+         * @param int
+         * @param string
+         * @param int
+         * @param bool
+        */
         Evento(string tema, int duracion, string ubicacion, int capacidad, bool registroRequerido);
-        //Evento Digital
+               /**
+         * Constructor de la Clase Evento, tipo Digital
+         * @param string
+         * @param int
+         * @param int
+         * @param string
+         * @param bool
+        */
         Evento(string tema, int duracion, int capacidad, string plataformaTransmision, bool accesoGratuito);
-        //Evento Corporativo
+                /**
+         * Constructor de la Clase Evento, tipo Corporativo
+         * @param string
+         * @param int
+         * @param string
+         * @param int
+         * @param string
+         * @param string
+        */
         Evento(string tema, int duracion, string ubicacion, int capacidad, string departamentoResponsable, string empresa);
-        //Evento Academico
+                /**
+         * Constructor de la Clase Evento, tipo Academico
+         * @param string
+         * @param int
+         * @param string
+         * @param int
+         * @param string
+         * @param bool
+        */
         Evento(string tema, int duracion, string ubicacion, int capacidad, string universidad, bool certificadoDisponible);
-        //Evento Privado
+                /**
+         * Constructor de la Clase Evento, tipo Privado
+         * @param int
+         * @param string
+         * @param int
+        */
         Evento(int duracion, string ubicacion, int capacidad);
-
+        /**
+         * Getters de la Clase
+        */
         string getTipo();
         string getTema();
         string getUbicacion();
@@ -31,16 +70,24 @@ class Evento {
         int getCapacidad();
         int getCantidad();
         int getDuracion();
-
         bool getRegistroRequerido();
         bool getAccesoGratuito();
         bool getCertificadoDisponible();
-
+        /**
+         * Lista los Asistentes en el Evento
+        */
         void listarAsistentes();
-        void setUbicacion(string ubicacion);
-        void setDuracion(int duracion);
-
+        /**
+         * @return un string con los asistentes del evento
+        */
+        string getAsistentes();
+        /**
+         * Agrega un Asistente a asistentes
+         * @return true si se agrega correctamente, false si falla
+        */
         bool addAsistente(Asistente* asistente);
-
+        /**
+         * Destructor de la Clase Evento
+        */
         ~Evento();
 };
